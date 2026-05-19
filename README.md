@@ -6,12 +6,6 @@ BlinkControl is a Chrome extension that lets you navigate the web entirely throu
 
 ---
 
-## Demo
-
-> 📹 *Demo video coming soon*
-
----
-
 ## Features
 
 - 👁️ **Blink-based control** — single, double, triple blink and long blink mapped to browser actions
@@ -24,19 +18,17 @@ BlinkControl is a Chrome extension that lets you navigate the web entirely throu
 
 ## Gesture Mapping
 
-| Gesture | Action |
-|---|---|
-| Single Blink | Click |
-| Double Blink | New Tab |
-| Triple Blink | Close Tab |
-| Long Blink | Reload |
-| Left Wink | Previous Tab |
-| Right Wink | Next Tab |
-| Hand Pinch | Click |
-| Swipe Left | Navigate Back |
-| Swipe Right | Navigate Forward |
-| Scroll Up | Scroll Up |
-| Scroll Down | Scroll Down |
+- Hand Scroll Up -> Scroll Up
+- Hand Scroll Down -> Scroll Down
+- Hand Swipe L -> Navigate Back
+- Hand Swipe R -> Navigate Forward
+- Hand Pinch -> Click
+- Single Blink -> Click
+- Double Blink -> New Tab
+- Triple Blink -> Close Tab
+- Long Blink -> Reload
+- Left Wink -> Prev Tab
+- Right Wink -> Next Tab
 
 ---
 
