@@ -1,1 +1,0 @@
-import"./styles-Cxq_M8WJ.js";const t=document.getElementById("open-controller");t==null||t.addEventListener("click",async()=>{const[e]=await chrome.tabs.query({active:!0,currentWindow:!0});e!=null&&e.id&&await chrome.sidePanel.open({tabId:e.id}),window.close()});
