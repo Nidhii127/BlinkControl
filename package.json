@@ -1,0 +1,20 @@
+{
+  "name": "blinkcontrol-extension",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare-models": "node scripts/fetch-models.mjs",
+    "dev": "vite",
+    "build": "npm run prepare-models && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource/nunito": "^5.2.7",
+    "@mediapipe/tasks-vision": "^0.10.14"
+  },
+  "devDependencies": {
+    "@crxjs/vite-plugin": "^2.0.0-beta.25",
+    "vite": "^5.4.10"
+  }
+}
