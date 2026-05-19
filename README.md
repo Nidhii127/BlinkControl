@@ -1,73 +1,76 @@
-# BlinkControl Local AI (Chrome Extension)
+# BlinkControl
 
-Control Chrome with local hand and eye gestures using your laptop/PC camera.
+> Hands-free browser control using eye blinks and hand gestures — powered by on-device AI, no server required.
+
+BlinkControl is a Chrome extension that lets you navigate the web entirely through facial gestures and hand movements. Built with MediaPipe and WebAssembly, all inference runs locally in the browser — no data ever leaves your device.
+
+---
+
+## Demo
+
+> 📹 *Demo video coming soon*
+
+---
+
+## Features
+
+- 👁️ **Blink-based control** — single, double, triple blink and long blink mapped to browser actions
+- 🖐️ **Hand gesture recognition** — scroll, navigate, pinch-to-click via MediaPipe hand tracking
+- 🔒 **100% on-device** — no camera frames uploaded, no external API calls
+- ⚡ **WebAssembly runtime** — MediaPipe WASM bundled into the extension for fast, offline inference
+- 🌐 **Cross-platform** — works on Windows, macOS, and Linux wherever Chrome supports Manifest V3
+
+---
 
 ## Gesture Mapping
 
-- Hand Scroll Up -> Scroll Up
-- Hand Scroll Down -> Scroll Down
-- Hand Swipe L -> Navigate Back
-- Hand Swipe R -> Navigate Forward
-- Hand Pinch -> Click
-- Single Blink -> Click
-- Double Blink -> New Tab
-- Triple Blink -> Close Tab
-- Long Blink -> Reload
-- Left Wink -> Prev Tab
-- Right Wink -> Next Tab
+| Gesture | Action |
+|---|---|
+| Single Blink | Click |
+| Double Blink | New Tab |
+| Triple Blink | Close Tab |
+| Long Blink | Reload |
+| Left Wink | Previous Tab |
+| Right Wink | Next Tab |
+| Hand Pinch | Click |
+| Swipe Left | Navigate Back |
+| Swipe Right | Navigate Forward |
+| Scroll Up | Scroll Up |
+| Scroll Down | Scroll Down |
 
-## Privacy and Security
+---
 
-- Inference runs locally in browser JavaScript with MediaPipe Tasks.
-- No camera frames are uploaded by this extension.
-- Camera permission is requested by browser prompt when user clicks start.
-- Manifest V3 is used, with minimal permissions for tab and scripting actions.
-- Models and wasm runtime are packaged into the extension at build time.
+## Tech Stack
 
-## Run
+- **MediaPipe Tasks** — face landmark detection + hand gesture recognition
+- **WebAssembly (WASM)** — in-browser ML inference without a backend
+- **Chrome Extension Manifest V3** — minimal permissions, service worker architecture
+- **Vite** — build tooling and bundling
 
-1. Install dependencies:
-   - `npm install`
-2. Build extension:
-   - `npm run build`
-   - This downloads model files once and bundles them locally in `dist`.
-3. Open `chrome://extensions`
-4. Enable **Developer mode**
-5. Click **Load unpacked**
-6. Select the generated `dist` folder
-7. Click the extension icon -> **Open Controller** -> **Start Camera + AI**
+---
 
-## Cross-Platform Notes
+## Getting Started
 
-- Works on Windows/macOS/Linux wherever Chrome supports MV3.
-- Camera behavior depends on OS camera privacy settings and browser permissions.
+```bash
+# Install dependencies
+npm install
 
-## Research Add-ons for IEEE Paper
+# Build the extension (also downloads ML model files)
+npm run build
+```
 
-Add these measurable components to strengthen publication quality:
+Then load the extension in Chrome:
 
-1. Latency profiling:
-   - Report end-to-end latency (capture -> inference -> action) with p50/p95.
-2. Fairness and demographic robustness:
-   - Balanced test cohorts and report per-group accuracy/F1/EER.
-3. Illumination robustness:
-   - Evaluate low light, back light, strong white light, and mixed indoor light.
-4. Background robustness:
-   - Test cluttered vs plain backgrounds and moving objects in background.
-5. Skin tone and eye-shape inclusivity:
-   - Track subgroup performance and threshold calibration drift.
-6. Pose and occlusion:
-   - Evaluate with glasses, masks, head rotation, and partial face visibility.
-7. User adaptation:
-   - Add optional per-user calibration and compare with global thresholds.
-8. False trigger safety:
-   - Report false positives/hour and recovery strategy.
-9. Power and CPU cost:
-   - Measure CPU/GPU usage, thermal impact, and battery drain.
-10. Dataset protocol:
-   - Publish collection protocol, splits, label quality checks, and ethics process.
+1. Go to `chrome://extensions`
+2. Enable **Developer mode**
+3. Click **Load unpacked** → select the `dist/` folder
+4. Click the extension icon → **Open Controller** → **Start Camera + AI**
 
-## Current Implementation Limitations
+---
 
-- Thresholds are heuristic and may require per-user tuning.
-- Click action targets current viewport center for safety and consistency.
+## Privacy
+
+- Camera access is requested only when you click Start — never in the background
+- All ML inference runs locally via MediaPipe WASM
+- No frames, landmarks, or usage data are sent to any server
+- Manifest V3 with minimal declared permissions (`tabs`, `scripting`)
